@@ -2,11 +2,13 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from datetime import datetime, timedelta
 import pytz
+import os
+from pathlib import Path
 
 # Configuration
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-CREDENTIALS_FILE = '../config/credentials.json'
-CALENDAR_ID = '4906d31abdbbad405d77dbd7f8ec5d26eb6aa8961b169afb43462baad4609a30@group.calendar.google.com'
+CREDENTIALS_FILE = os.getenv('GOOGLE_CREDENTIALS_FILE', str(Path(__file__).parent.parent / 'config' / 'credentials.json'))
+CALENDAR_ID = os.getenv('GOOGLE_CALENDAR_ID', '4906d31abdbbad405d77dbd7f8ec5d26eb6aa8961b169afb43462baad4609a30@group.calendar.google.com')
 
 def get_calendar_service():
     """Authenticate and return a Google Calendar service object."""

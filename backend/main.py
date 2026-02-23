@@ -56,7 +56,7 @@ async def converse(message: dict):
                 if hour > 12: hour = 12  # Cap at 12 for PM
                 elif hour == 0: hour = 12  # Handle 0 as 12 PM
                 # Set base date and time
-                base_date = datetime(2025, 7, 2)  # July 2, 2025
+                base_date = datetime.now()
                 start_time = base_date.replace(hour=hour, minute=0, second=0, microsecond=0, tzinfo=None)
                 end_time = start_time + timedelta(hours=1)
                 # Convert to ISO 8601 with timezone
